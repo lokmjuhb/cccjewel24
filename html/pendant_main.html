@@ -1,1 +1,176 @@
-<body></body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+    body{
+        padding: 0%;
+        margin: 0%;
+    }
+
+.comparison {
+  min-height: 100vh;
+  min-width: 100vw;
+  overflow: visible;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  overflow: hidden;
+}
+
+.SideA{
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  height: 50vh;
+  overflow: hidden;
+  background-color: #efefef;
+  z-index: 20;
+}
+
+.SideB{
+  min-width: 100vw;
+  min-height: 100vh;
+  position: absolute;
+  background-color: #efefef;
+  z-index: 19;
+}
+
+.slider {
+  position: absolute;
+  inset: 0;
+  min-width: 100vh;
+  opacity: 0%;
+  rotate: 90deg;
+  left: 25vw;
+  cursor: pointer;
+  transform: translate(0%, 50%);
+  z-index: 20;
+}
+
+.slider-line {
+  width: 100vw;
+  position: absolute;
+  height: 1.5px;
+  background: red;
+  top: 50vh;
+}
+
+.slider-icon{
+    width: 100vw;
+    height: 2px;
+    background-color: red;
+    position: absolute;
+    top: 50vh;
+    z-index: 20;
+}
+
+.iconpointer{
+    position: absolute;
+    left: 25vw;
+    max-height: 50px;
+    transform: translate(-50%, -50%);
+    z-index: 20;
+}
+
+.AL{
+    width: 50vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    text-align: center;
+}
+
+.SideImg{
+  height: 100vh;
+  text-align: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.AR{
+    width: 50vw;
+    height: 100vh;
+    background-color: #efefef;
+    position: absolute;
+    right: 0;
+    top: 0;
+    overflow: scroll;
+}
+
+.BL{
+    width: 50vw;
+    height: 100vh;
+    background-color: greenyellow;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.BR{
+    width: 50vw;
+    height: 100vh;
+    background-color: aqua;
+    position: absolute;
+    right: 0;
+    top: 0;
+    overflow: scroll;
+}
+
+</style>
+</head>
+<body>
+<div class="comparison" id="img-comp">
+  <div class="container">
+    <div class="SideA">
+        <div class="AL"><img class="SideImg" src="https://freight.cargo.site/t/original/i/U1797705006080007552951529028405/_MG_0009a.JPG"></div>
+        <div class="AR"><embed style="width: 46vw; min-height: 100vh; margin: 2vw; overflow-x: hidden;" src="https://freight.cargo.site/m/F1805814134490850638959107947317/MR_blurb_f1.html"></div>
+    </div>
+    <div class="SideB">
+        <div class="BL"></div>
+        <div class="BR"><embed style="width: 46vw; min-height: 100vh; margin: 2vw; overflow-x: hidden;" src="https://freight.cargo.site/m/F1805814134490850638959107947317/MR_blurb_f1.html"></div>
+    </div>
+
+    <div class="slider-line"></div>
+    <div class="slider-icon">         
+        <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="2px"
+        stroke="red"
+        class="iconpointer"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M8.25 15L12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9"
+        />
+      </svg></div>
+    <input type="range" class="slider" min="0" max="100"/>
+  </div>
+</div>
+<script>
+
+const slider = document.querySelector(".comparison .slider");
+const SideA = document.querySelector(".comparison .SideA");
+const sliderLine = document.querySelector(".comparison .slider-line");
+const sliderIcon = document.querySelector(".comparison .slider-icon");
+
+slider.addEventListener("input", (e) => {
+  let sliderValue = e.target.value + "%";
+
+  SideA.style.height = sliderValue;
+  sliderLine.style.top = sliderValue;
+  sliderIcon.style.top = sliderValue;
+});
+</script>
+</body>
+</html>
